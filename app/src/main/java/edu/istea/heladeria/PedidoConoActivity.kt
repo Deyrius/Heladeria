@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Parcelable
+import android.util.Log
 import android.view.View
 import android.widget.*
 import edu.istea.heladeria.model.Cono
@@ -17,16 +18,22 @@ class PedidoConoActivity : AppCompatActivity() {
     lateinit var borrar: ImageButton
     lateinit var volver: Button
 
-    lateinit var primerGusto: RadioButton
-    lateinit var p_chocolate: CheckBox
-    lateinit var p_vainilla: CheckBox
-    lateinit var p_frutilla: CheckBox
+    lateinit var primerGusto: RadioGroup
+    lateinit var p_chocolate: RadioButton
+    lateinit var p_vainilla: RadioButton
+    lateinit var p_frutilla: RadioButton
 
-    lateinit var segundoGusto: RadioButton
-    lateinit var s_chocolate: CheckBox
-    lateinit var s_vainilla: CheckBox
-    lateinit var s_frutilla: CheckBox
+    lateinit var segundoGusto: RadioGroup
+    lateinit var s_chocolate: RadioButton
+    lateinit var s_vainilla: RadioButton
+    lateinit var s_frutilla: RadioButton
 
+    lateinit var opcion:RadioButton
+
+    lateinit var primerGustoCono: String
+    lateinit var segundoGustoCono: String
+    var id: Int = 0
+    lateinit var conosTotales: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,23 +46,14 @@ class PedidoConoActivity : AppCompatActivity() {
         }
         borrar.setOnClickListener{
             listaConos.clear()
+            conosTotales.text = listaConos.size.toString()
         }
         agregar.setOnClickListener {
-            fun onRadioButtonClicked(view: View){
-                if(view is RadioButton){
-                    val checked = view.isChecked
+            primerGustoSeleccion()
+            segundoGustoSeleccion()
+            armoCono(primerGustoCono,segundoGustoCono,id)
+            Toast.makeText(this,"Se agregó un cono a su pedido",Toast.LENGTH_SHORT).show()
 
-                    when(view.getId()){
-                        R.id.btn_pg_chocolate ->
-                            if (checked){/*XXXXXXXXX */}
-                        R.id.btn_pg_vainilla ->
-                            if (checked){/*XXXXXXXXX */}
-                        R.id.btn_pg_frutilla ->
-                            if (checked){/*XXXXXXXXX */}
-                    }
-
-                }
-            }
         }
 
     }
@@ -73,10 +71,38 @@ class PedidoConoActivity : AppCompatActivity() {
         s_chocolate = findViewById(R.id.btn_sg_chocolate)
         s_vainilla = findViewById(R.id.btn_sg_vainilla)
         s_frutilla = findViewById(R.id.btn_sg_frutilla)
+        primerGustoCono = ""
+        id = listaConos.size +1
+        conosTotales = findViewById(R.id.txt_cono_cantidad_total)
 
 
 
     }
+    fun primerGustoSeleccion(){
+
+        opcion= findViewById(primerGusto.checkedRadioButtonId)
+            when(opcion.text.toString().toLowerCase()){
+                "chocolate" -> {primerGustoCono = "Chocolate"}
+                "vainilla" -> {primerGustoCono = "Vainilla"}
+                "frutilla" -> {primerGustoCono = "Frutilla"}
+            }
+
+    }
+    fun segundoGustoSeleccion(){
+        opcion= findViewById(segundoGusto.checkedRadioButtonId)
+            when(opcion.text.toString().toLowerCase()){
+                "chocolate" -> {segundoGustoCono = "Chocolate"}
+                "vainilla" -> {segundoGustoCono = "Vainilla"}
+                "frutilla" -> {segundoGustoCono = "Frutilla"}
+            }
+
+    }
+
+    fun armoCono(primerGustoCono:String,segundoGustoCono:String,id:Int){
+        listaConos.add(Cono(id,primerGustoCono,segundoGustoCono))
+        conosTotales.text = listaConos.size.toString()
+    }
+
 
 
 
