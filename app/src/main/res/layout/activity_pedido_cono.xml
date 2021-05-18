@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
+    tools:context=".PedidoConoActivity">
+
+    <Button
+        android:id="@+id/btn_cono_volver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="168dp"
+        android:text="Volver al menú"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btn_agregar_cono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="168dp"
+        android:text="Agregar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_cono_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="252dp"
+        android:text="Conos en total: X"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.104"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_cono_cantidad_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="252dp"
+        android:hint="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintStart_toEndOf="@+id/txt_cono_total" />
+
+    <ImageButton
+        android:id="@+id/btn_cono_reiniciar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_cono_volver"
+        app:layout_constraintHorizontal_bias="0.629"
+        app:layout_constraintStart_toEndOf="@+id/btn_agregar_cono"
+        app:srcCompat="@android:drawable/ic_menu_delete" />
+
+    <RadioGroup
+        android:id="@+id/primer_gusto"
+        android:layout_width="match_parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/btn_pg_chocolate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chocolate" />
+
+        <RadioButton
+            android:id="@+id/btn_pg_vainilla"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vainilla" />
+
+        <RadioButton
+            android:id="@+id/btn_pg_frutilla"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Frutilla" />
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/segundo_gusto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/primer_gusto">
+
+        <RadioButton
+            android:id="@+id/btn_sg_chocolate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chocolate" />
+
+        <RadioButton
+            android:id="@+id/btn_sg_vainilla"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vainilla" />
+
+        <RadioButton
+            android:id="@+id/btn_sg_frutilla"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Frutilla" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/txt_primer_gusto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Elija el primer gusto"
+        app:layout_constraintBottom_toTopOf="@+id/primer_gusto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_segundo_gusto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Elija el segundo gusto"
+        app:layout_constraintBottom_toTopOf="@+id/segundo_gusto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.116"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
