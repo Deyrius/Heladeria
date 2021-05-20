@@ -8,12 +8,16 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import edu.istea.heladeria.model.Cono
+import edu.istea.heladeria.model.Cuarto
+import edu.istea.heladeria.model.Kilo
+import java.lang.Exception
 
 class PedidoConoActivity : AppCompatActivity() {
 
-    //var listaGustos : ArrayList<Gustos> = intent.getSerializableExtra("listaGustos") as ArrayList<Gustos>
-
     lateinit var listaConos : ArrayList<Cono>
+    lateinit var listaCuarto: ArrayList<Cuarto>
+    lateinit var listaKilo: ArrayList<Kilo>
+
     lateinit var agregar: Button
     lateinit var borrar: ImageButton
     lateinit var volver: Button
@@ -42,6 +46,9 @@ class PedidoConoActivity : AppCompatActivity() {
 
         volver.setOnClickListener {
             val intent = Intent(this,MainActivity::class.java)
+            intent.putExtra("listaConos",listaConos)
+            intent.putExtra("listaCuarto",listaCuarto)
+            intent.putExtra("listaKilo",listaKilo)
             startActivity(intent)
         }
         borrar.setOnClickListener{
@@ -49,17 +56,22 @@ class PedidoConoActivity : AppCompatActivity() {
             conosTotales.text = listaConos.size.toString()
         }
         agregar.setOnClickListener {
-            primerGustoSeleccion()
-            segundoGustoSeleccion()
-            armoCono(primerGustoCono,segundoGustoCono,id)
-            Toast.makeText(this,"Se agregó un cono a su pedido",Toast.LENGTH_SHORT).show()
+            try {
+                primerGustoSeleccion()
+                segundoGustoSeleccion()
+                armoCono(primerGustoCono,segundoGustoCono,id)
+                Toast.makeText(this,"Se agregó un cono a su pedido",Toast.LENGTH_SHORT).show()
+            }catch (e:Exception){ Toast.makeText(this,"Por favor seleccione los gustos",Toast.LENGTH_SHORT).show()}
+
 
         }
 
     }
 
     private fun inicializador(){
-        listaConos = intent.getSerializableExtra("listaConos") as ArrayList<Cono>
+        listaCuarto= intent.getSerializableExtra("listaCuarto")as ArrayList<Cuarto>
+        listaKilo= intent.getSerializableExtra("listaKilo") as ArrayList<Kilo>
+
         primerGusto= findViewById(R.id.primer_gusto)
         segundoGusto = findViewById(R.id.segundo_gusto)
         agregar = findViewById(R.id.btn_agregar_cono)
@@ -72,8 +84,16 @@ class PedidoConoActivity : AppCompatActivity() {
         s_vainilla = findViewById(R.id.btn_sg_vainilla)
         s_frutilla = findViewById(R.id.btn_sg_frutilla)
         primerGustoCono = ""
-        id = listaConos.size +1
+
         conosTotales = findViewById(R.id.txt_cono_cantidad_total)
+
+        try {
+            listaConos = intent.getSerializableExtra("listaConos") as ArrayList<Cono>
+            conosTotales.text = listaConos.size.toString()
+        }catch (e:Exception){listaConos = ArrayList()}
+
+        id = listaConos.size +1
+
 
 
 
@@ -97,7 +117,6 @@ class PedidoConoActivity : AppCompatActivity() {
             }
 
     }
-
     fun armoCono(primerGustoCono:String,segundoGustoCono:String,id:Int){
         listaConos.add(Cono(id,primerGustoCono,segundoGustoCono))
         conosTotales.text = listaConos.size.toString()

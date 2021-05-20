@@ -4,6 +4,241 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
     tools:context=".PedidoCuartoActivity">
+
+    <RadioGroup
+        android:id="@+id/rg_tercer_grupo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.304"
+        app:layout_constraintStart_toEndOf="@+id/rg_segundo_gusto"
+        app:layout_constraintTop_toBottomOf="@+id/txt_titulo">
+
+        <RadioButton
+            android:id="@+id/rbtn_tercer_chocolate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chocolate" />
+
+        <RadioButton
+            android:id="@+id/rbtn_tercer_vainilla"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vainilla" />
+
+        <RadioButton
+            android:id="@+id/rbtn_tercer_frutilla"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Frutilla" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/rg_primer_gusto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_titulo"
+        app:layout_constraintVertical_bias="0.027">
+
+        <RadioButton
+            android:id="@+id/rbtn_primer_chocolate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chocolate" />
+
+        <RadioButton
+            android:id="@+id/rbtn_primer_vainilla"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vainilla" />
+
+        <RadioButton
+            android:id="@+id/rbtn_primer_frutilla"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Frutilla" />
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/rg_segundo_gusto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/rg_primer_gusto"
+        app:layout_constraintTop_toBottomOf="@+id/txt_titulo"
+        app:layout_constraintVertical_bias="0.027">
+
+        <RadioButton
+            android:id="@+id/rbtn_segundo_chocolate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chocolate" />
+
+        <RadioButton
+            android:id="@+id/rbtn_segundo_vainilla"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vainilla" />
+
+        <RadioButton
+            android:id="@+id/rbtn_segundo_frutilla"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Frutilla" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/txt_titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Seleccione los sabores:"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.04" />
+
+    <Button
+        android:id="@+id/btn_cuarto_volver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/background_dark"
+        android:text="Volver al  Menú"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.825"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rg_tercer_grupo"
+        app:layout_constraintVertical_bias="0.666" />
+
+    <Button
+        android:id="@+id/btn_cuarto_agregar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/background_dark"
+        android:text="Agregar"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.145"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rg_segundo_gusto"
+        app:layout_constraintVertical_bias="0.665" />
+
+    <ImageButton
+        android:id="@+id/btn_cuarto_borrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/background_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.445"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rg_segundo_gusto"
+        app:layout_constraintVertical_bias="0.876"
+        app:srcCompat="@android:drawable/ic_menu_delete" />
+
+    <TextView
+        android:id="@+id/txt_cuarto_plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Seleccione algun Plus:"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.059"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.273" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="163dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rg_segundo_gusto"
+        app:layout_constraintVertical_bias="0.269"
+        app:srcCompat="@mipmap/cuarto" />
+
+    <RadioGroup
+        android:id="@+id/rg_cuarto_plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="224dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_cuarto_borrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.576"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_cuarto_plus"
+        app:layout_constraintVertical_bias="0.069">
+
+        <RadioButton
+            android:id="@+id/rb_cuarto_plus_chocolate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chocolate Fundido" />
+
+        <RadioButton
+            android:id="@+id/rb_cuarto_plus_vainilla"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Crema de Vainilla" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/txt_cuarto_pedido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Pedido:"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.613" />
+
+    <TextView
+        android:id="@+id/txt_cuarto_vasos_totales"
+        android:layout_width="8dp"
+        android:layout_height="22dp"
+        android:hint="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintStart_toEndOf="@+id/txt_cuarto_pedidox"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.643" />
+
+    <TextView
+        android:id="@+id/txt_cuarto_pedidox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cuartos en total: X"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.219"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.64" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

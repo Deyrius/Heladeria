@@ -23,7 +23,6 @@
         android:id="@+id/txt_cono"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:fontFamily="sans-serif-black"
         android:text="Cono"
         app:layout_constraintBottom_toTopOf="@+id/btn_img_cono"
@@ -40,8 +39,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.284"
+        app:layout_constraintVertical_bias="0.299"
         app:srcCompat="@mipmap/cuarto" />
+
+    <TextView
+        android:id="@+id/txt_cuarto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="1/4"
+        app:layout_constraintBottom_toTopOf="@+id/btn_img_cuarto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/btn_img_kilo"
@@ -52,26 +62,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.445"
+        app:layout_constraintVertical_bias="0.465"
         app:srcCompat="@mipmap/kilo" />
-
-    <TextView
-        android:id="@+id/txt_cuarto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="sans-serif-black"
-        android:text="1/4"
-        app:layout_constraintBottom_toTopOf="@+id/btn_img_cuarto"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/txt_kilo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
         android:fontFamily="sans-serif-black"
         android:text="1Kg"
         app:layout_constraintBottom_toTopOf="@+id/btn_img_kilo"

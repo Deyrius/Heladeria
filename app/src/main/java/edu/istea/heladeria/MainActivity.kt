@@ -7,13 +7,13 @@ import android.widget.*
 import edu.istea.heladeria.model.Cono
 import edu.istea.heladeria.model.Cuarto
 import edu.istea.heladeria.model.Kilo
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 
-    val listaConos : ArrayList<Cono> = ArrayList()
-    val listaCuartos : ArrayList<Cuarto> = ArrayList()
-    val listakilo : ArrayList<Kilo> = ArrayList()
-    val listaGustos = arrayOf("Chocolate","Vainilla","Frutilla")
+    lateinit var listaConos : ArrayList<Cono>
+    lateinit var listaCuartos : ArrayList<Cuarto>
+    lateinit var listakilo : ArrayList<Kilo>
     lateinit var totalConos: TextView
     lateinit var totalCuartos: TextView
     lateinit var totalKilo: TextView
@@ -30,19 +30,22 @@ class MainActivity : AppCompatActivity() {
         cono.setOnClickListener {
             val intent = Intent(this,PedidoConoActivity::class.java)
             intent.putExtra("listaConos",listaConos)
-            intent.putExtra("listaGustos",listaGustos)
+            intent.putExtra("listaCuarto",listaCuartos)
+            intent.putExtra("listaKilo",listakilo)
             startActivity(intent)
         }
         cuarto.setOnClickListener {
             val intent = Intent(this,PedidoCuartoActivity::class.java)
-            intent.putExtra("listaCuartos",listaCuartos)
-            intent.putExtra("listaGustos",listaGustos)
+            intent.putExtra("listaCuarto",listaCuartos)
+            intent.putExtra("listaConos",listaConos)
+            intent.putExtra("listaKilo",listakilo)
             startActivity(intent)
         }
         kilo.setOnClickListener {
             val intent = Intent(this,PedidoKiloActivity::class.java)
             intent.putExtra("listaKilo",listakilo)
-            intent.putExtra("listaGustos",listaGustos)
+            intent.putExtra("listaConos",listaConos)
+            intent.putExtra("listaCuarto",listaCuartos)
             startActivity(intent)
         }
 
@@ -56,6 +59,18 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun inicializarElementos(){
+        try {
+            listaConos = intent.getSerializableExtra("listaConos") as ArrayList<Cono>
+        }catch (e:Exception){listaConos = ArrayList()}
+
+        try {
+            listaCuartos = intent.getSerializableExtra("listaCuarto") as ArrayList<Cuarto>
+        }catch (e:Exception){listaCuartos = ArrayList()}
+
+        try {
+            listakilo = intent.getSerializableExtra("totalKilo") as ArrayList<Kilo>
+        }catch (e:Exception){listakilo = ArrayList()}
+
         totalConos = findViewById(R.id.txt_cant_total_conos)
         totalCuartos = findViewById(R.id.txt_cant_total_cuarto)
         totalKilo = findViewById(R.id.txt_cant_total_kilo)
