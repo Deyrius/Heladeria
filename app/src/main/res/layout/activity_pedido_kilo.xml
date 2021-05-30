@@ -226,7 +226,7 @@
         android:id="@+id/txt_cuarto_pedidox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cuartos en total: X"
+        android:text="Kilos en total: X"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.219"
