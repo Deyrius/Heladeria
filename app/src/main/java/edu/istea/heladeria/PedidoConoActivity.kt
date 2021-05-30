@@ -9,14 +9,18 @@ import android.view.View
 import android.widget.*
 import edu.istea.heladeria.model.Cono
 import edu.istea.heladeria.model.Cuarto
+import edu.istea.heladeria.model.Historico
 import edu.istea.heladeria.model.Kilo
 import java.lang.Exception
+import kotlin.properties.Delegates
 
 class PedidoConoActivity : AppCompatActivity() {
 
     lateinit var listaConos : ArrayList<Cono>
     lateinit var listaCuarto: ArrayList<Cuarto>
-    lateinit var listaKilo: ArrayList<Kilo>
+    lateinit var kiloBeta: ArrayList<Kilo>
+    lateinit var informeDiario: Array<Int>
+
 
     lateinit var agregar: Button
     lateinit var borrar: ImageButton
@@ -38,6 +42,13 @@ class PedidoConoActivity : AppCompatActivity() {
     lateinit var segundoGustoCono: String
     var id: Int = 0
     lateinit var conosTotales: TextView
+    var numeroPedido: Int by Delegates.notNull<Int>()
+    var primeraCaja: Int by Delegates.notNull<Int>()
+    var segundaCaja: Int by Delegates.notNull<Int>()
+    var tercerCaja: Int by Delegates.notNull<Int>()
+    lateinit var ventasRepartidores: Array<Int>
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +59,16 @@ class PedidoConoActivity : AppCompatActivity() {
             val intent = Intent(this,MainActivity::class.java)
             intent.putExtra("listaConos",listaConos)
             intent.putExtra("listaCuarto",listaCuarto)
-            intent.putExtra("listaKilo",listaKilo)
+            intent.putExtra("beta",kiloBeta)
+            intent.putExtra("numeroPedido",numeroPedido)
+            intent.putExtra("primeraCaja",primeraCaja)
+            intent.putExtra("segundaCaja",segundaCaja)
+            intent.putExtra("tercerCaja",tercerCaja)
+            intent.putExtra("ventasRepartidores",ventasRepartidores)
+            intent.putExtra("informeDiario",informeDiario)
+
+
+
             startActivity(intent)
         }
         borrar.setOnClickListener{
@@ -69,8 +89,8 @@ class PedidoConoActivity : AppCompatActivity() {
     }
 
     private fun inicializador(){
-        listaCuarto= intent.getSerializableExtra("listaCuarto")as ArrayList<Cuarto>
-        listaKilo= intent.getSerializableExtra("listaKilo") as ArrayList<Kilo>
+
+
 
         primerGusto= findViewById(R.id.primer_gusto)
         segundoGusto = findViewById(R.id.segundo_gusto)
@@ -91,6 +111,31 @@ class PedidoConoActivity : AppCompatActivity() {
             listaConos = intent.getSerializableExtra("listaConos") as ArrayList<Cono>
             conosTotales.text = listaConos.size.toString()
         }catch (e:Exception){listaConos = ArrayList()}
+        try {
+            kiloBeta = intent.getSerializableExtra("kilototal") as ArrayList<Kilo>
+        }catch (e:Exception){}
+        try {
+            listaCuarto= intent.getSerializableExtra("listaCuarto")as ArrayList<Cuarto>
+        }catch (e:Exception){}
+        try {
+            numeroPedido = intent.getSerializableExtra("numeroPedido") as Int
+        }catch (e:Exception){numeroPedido = 0}
+        try {
+            primeraCaja = intent.getSerializableExtra("numeroPedido") as Int
+        }catch (e:Exception){primeraCaja = 0}
+        try {
+            segundaCaja = intent.getSerializableExtra("numeroPedido") as Int
+        }catch (e:Exception){segundaCaja = 0}
+        try {
+            tercerCaja = intent.getSerializableExtra("numeroPedido") as Int
+        }catch (e:Exception){tercerCaja = 0}
+        try {
+            ventasRepartidores = intent.getSerializableExtra("ventasRepartidores") as Array<Int>
+        }catch (e:Exception){ventasRepartidores = arrayOf(0,0,0,0,)}
+        try {
+            informeDiario = intent.getSerializableExtra("informeDiario") as Array<Int>
+        }catch (e:Exception){informeDiario = arrayOf(0,0,0)}
+
 
         id = listaConos.size +1
 
@@ -99,30 +144,38 @@ class PedidoConoActivity : AppCompatActivity() {
 
     }
     fun primerGustoSeleccion(){
-
-        opcion= findViewById(primerGusto.checkedRadioButtonId)
+        try {
+            opcion= findViewById(primerGusto.checkedRadioButtonId)
             when(opcion.text.toString().toLowerCase()){
                 "chocolate" -> {primerGustoCono = "Chocolate"}
                 "vainilla" -> {primerGustoCono = "Vainilla"}
                 "frutilla" -> {primerGustoCono = "Frutilla"}
             }
+        }catch (e:Exception){primerGustoCono = ""}
+
 
     }
     fun segundoGustoSeleccion(){
-        opcion= findViewById(segundoGusto.checkedRadioButtonId)
+        try {
+            opcion= findViewById(segundoGusto.checkedRadioButtonId)
             when(opcion.text.toString().toLowerCase()){
                 "chocolate" -> {segundoGustoCono = "Chocolate"}
                 "vainilla" -> {segundoGustoCono = "Vainilla"}
                 "frutilla" -> {segundoGustoCono = "Frutilla"}
             }
+        }catch (e:Exception){segundoGustoCono = ""}
+
 
     }
     fun armoCono(primerGustoCono:String,segundoGustoCono:String,id:Int){
-        listaConos.add(Cono(id,primerGustoCono,segundoGustoCono))
-        conosTotales.text = listaConos.size.toString()
+        if (primerGustoCono == "" && segundoGustoCono == ""){
+         Toast.makeText(this,"Seleccione los gustos",Toast.LENGTH_SHORT).show()
+        }
+        else {
+            listaConos.add(Cono(id,primerGustoCono,segundoGustoCono))
+            conosTotales.text = listaConos.size.toString()
+        }
     }
-
-
 
 
 }

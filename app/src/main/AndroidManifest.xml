@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PedidoKiloActivity"></activity>
+        <activity android:name=".InformeActivity"></activity>
+        <activity android:name=".DespachoActivity" />
+        <activity android:name=".PedidoKiloActivity" />
         <activity android:name=".PedidoCuartoActivity" />
         <activity android:name=".PedidoConoActivity" />
         <activity android:name=".MainActivity">

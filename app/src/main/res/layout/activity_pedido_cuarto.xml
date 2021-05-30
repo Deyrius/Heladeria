@@ -112,7 +112,7 @@
         app:layout_constraintVertical_bias="0.04" />
 
     <Button
-        android:id="@+id/btn_cuarto_volver"
+        android:id="@+id/btn_kilo_volver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/background_dark"
@@ -126,7 +126,7 @@
         app:layout_constraintVertical_bias="0.666" />
 
     <Button
-        android:id="@+id/btn_cuarto_agregar"
+        android:id="@+id/btn_kilo_agregar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/background_dark"
@@ -140,7 +140,7 @@
         app:layout_constraintVertical_bias="0.665" />
 
     <ImageButton
-        android:id="@+id/btn_cuarto_borrar"
+        android:id="@+id/btn_kilo_borrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/background_dark"
@@ -183,7 +183,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="224dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_cuarto_borrar"
+        app:layout_constraintBottom_toTopOf="@+id/btn_kilo_borrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.576"
         app:layout_constraintStart_toStartOf="parent"
@@ -218,7 +218,7 @@
         app:layout_constraintVertical_bias="0.613" />
 
     <TextView
-        android:id="@+id/txt_cuarto_vasos_totales"
+        android:id="@+id/txt_cuarto_total"
         android:layout_width="8dp"
         android:layout_height="22dp"
         android:hint="0"
